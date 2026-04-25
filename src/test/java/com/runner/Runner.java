@@ -2,10 +2,10 @@ package com.runner;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
 
 import com.baseclass.BaseClass;
 
@@ -22,15 +22,13 @@ import com.baseclass.BaseClass;
 )
 public class Runner {
 
-    public static WebDriver driver;
-
     @BeforeClass
-    public static void browserLaunch() {
-        driver = BaseClass.launchBrowser("Chrome");
+    public static void setup() {
+        BaseClass.launchBrowser("Chrome");
     }
 
     @AfterClass
-    public static void afterSuite() {
-       BaseClass.quitBrowser();
+    public static void teardown() {
+        BaseClass.quitBrowser();
     }
 }
